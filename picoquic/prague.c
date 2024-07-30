@@ -217,7 +217,8 @@ static void picoquic_prague_update_alpha(picoquic_cnx_t* cnx,
         pr_state->l4s_epoch_send = pkt_ctx->send_sequence;
         uint64_t delta_ect1 = pkt_ctx->ecn_ect1_total_remote - pr_state->l4s_epoch_ect1;
         uint64_t delta_ce = pkt_ctx->ecn_ce_total_remote - pr_state->l4s_epoch_ce;
-
+        printf("ECN marks: %d\n", delta_ce);
+        
         if (delta_ce > 0) {
             frac = (delta_ce * 1024) / (delta_ce + delta_ect1);
         }

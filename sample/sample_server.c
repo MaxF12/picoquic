@@ -208,6 +208,9 @@ int sample_server_callback(picoquic_cnx_t* cnx,
     int ret = 0;
     sample_server_ctx_t* server_ctx = (sample_server_ctx_t*)callback_ctx;
     sample_server_stream_ctx_t* stream_ctx = (sample_server_stream_ctx_t*)v_stream_ctx;
+    
+    picoquic_congestion_algorithm_t const* algo = picoquic_prague_algorithm;
+    picoquic_set_congestion_algorithm(cnx, algo);
 
     /* If this is the first reference to the connection, the application context is set
      * to the default value defined for the server. This default value contains the pointer
